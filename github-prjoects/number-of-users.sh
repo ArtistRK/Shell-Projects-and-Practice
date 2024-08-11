@@ -5,7 +5,7 @@
 #Name: Rishab Kanoujia
 #Date: 08/09/2024
 #
-## Real Time AWS Prjoect
+## Real-Time AWS Project "Get the number of users using this repo"
 
 helper()
 
