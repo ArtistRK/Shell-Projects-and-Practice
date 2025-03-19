@@ -16,6 +16,7 @@ Steps:
 - Make a Cronjob to run script at desired time.
 comment
 
+set -xe
 
 #Variables
 BASE=/workspaces/Shell-Projects-and-Practice/Projects/Project2
@@ -37,7 +38,7 @@ then
 fi
 
 #Find the list of files larger than 20 MB
-for i in 'find $BASE -maxdepth $DEPTH -type f -size +20MB'
+for i in 'find $BASE -maxdepth $DEPTH -type f -size +20M'
 do
     if [ $RUN -eq 0 ]
     then
