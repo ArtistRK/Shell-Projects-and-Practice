@@ -34,7 +34,7 @@ fi
 if [[ "${#}" -lt 1 ]]
 then 
     echo "Usage: ${0} USER_NAME [COMMENT]..." 
-    echo "Create a user with name USER_NAME and Comments field of COMMENT" 
+    echo "Please Prove a user name to create a user with name USER_NAME and Comments field of COMMENT" 
     exit 1
 fi 
 
@@ -55,14 +55,15 @@ PASSWORD=$(date +%s%N)
 useradd -c "$COMMENT" -m $USER_NAME  #We putting comment in "" because it can be multiple arguement
 
 #Check if the user is created
-if [[ $? -ne 0 ]]
+if [[ $? -ne 0 ]]    #"$?" give the status of last command, if successfull or not.
 then
     echo "The Account Could not be created"
     exit 1
 fi
 
 #Set the password for the user
-echo $PASSWORD | passwd --stdin $USER_NAME
+#echo $PASSWORD | passwd --stdin $USER_NAME  "script is failing at the password-setting step because passwd --stdin is not supported on Debian-based distributions like Ubuntu. The --stdin option is specific to Red Hat-based distributions (RHEL, CentOS, Fedora)."
+echo "$USER_NAME:$PASSWORD" | chpasswd
 
 #Check if the password is successfully set or not
 if [[ $? -ne 0 ]]
